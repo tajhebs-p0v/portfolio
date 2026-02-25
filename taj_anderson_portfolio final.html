@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taj Anderson — Analytics Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0b0d;--surface:#111316;--surface2:#161820;--surface3:#1a1d26;--border:#1e2128;--border2:#252830;--border3:#2e3240;--text:#e8eaf0;--text2:#8b90a0;--text3:#555a6a;--accent:#4f7fff;--accent2:#7b5ea7;--accent3:#2dd4bf;--accent-dim:rgba(79,127,255,0.12);--accent-glow:rgba(79,127,255,0.06);--green:#22c55e;--amber:#f59e0b;--red:#ef4444;--mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--display:'Syne',sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.35;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+.shell{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,11,13,.9);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-text{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-.02em;color:var(--text);}
+.logo-text span{color:var(--accent);}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:11px;color:var(--text2);text-decoration:none;padding:5px 10px;border-radius:6px;transition:all .15s;letter-spacing:.02em;}
+.nav-links a:hover{color:var(--text);background:var(--surface);}
+.nav-badge{font-family:var(--mono);font-size:11px;color:var(--accent);background:var(--accent-dim);border:1px solid rgba(79,127,255,.2);padding:4px 10px;border-radius:20px;text-decoration:none;transition:all .15s;white-space:nowrap;}
+.nav-badge:hover{background:rgba(79,127,255,.2);}
+
+/* HERO */
+.hero{padding:140px 0 80px;position:relative;overflow:hidden;}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:40px 40px;opacity:.3;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 0%,transparent 100%);}
+.hero-glow{position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(79,127,255,.08) 0%,transparent 70%);pointer-events:none;}
+.hero-content{position:relative;z-index:2;}
+.hero-eyebrow{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.hero-eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:var(--accent);}
+.hero-name{font-family:var(--display);font-size:clamp(44px,7vw,80px);font-weight:800;letter-spacing:-.04em;line-height:.95;margin-bottom:24px;color:var(--text);}
+.hero-name .accent-word{color:transparent;-webkit-text-stroke:1px rgba(79,127,255,.6);}
+.hero-desc{font-size:17px;color:var(--text2);max-width:560px;line-height:1.7;margin-bottom:36px;font-weight:300;}
+.hero-desc strong{color:var(--text);font-weight:400;}
+.hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.btn-primary{font-family:var(--mono);font-size:13px;color:var(--bg);background:var(--accent);padding:10px 22px;border-radius:8px;text-decoration:none;font-weight:500;transition:all .2s;letter-spacing:.02em;}
+.btn-primary:hover{background:#6b8fff;transform:translateY(-1px);}
+.btn-ghost{font-family:var(--mono);font-size:13px;color:var(--text2);background:transparent;padding:10px 22px;border-radius:8px;text-decoration:none;border:1px solid var(--border2);transition:all .2s;letter-spacing:.02em;}
+.btn-ghost:hover{color:var(--text);border-color:var(--text3);}
+.hero-stats{display:flex;gap:40px;margin-top:56px;padding-top:40px;border-top:1px solid var(--border);flex-wrap:wrap;}
+.stat-num{font-family:var(--display);font-size:28px;font-weight:700;color:var(--text);letter-spacing:-.03em;}
+.stat-num span{color:var(--accent);}
+.stat-label{font-family:var(--mono);font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;}
+
+/* SECTION */
+section{padding:72px 0;}
+.section-header{display:flex;align-items:baseline;gap:16px;margin-bottom:40px;}
+.section-num{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:.1em;}
+.section-title{font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:-.03em;color:var(--text);}
+.section-line{flex:1;height:1px;background:var(--border);}
+.section-sub{font-size:14px;color:var(--text2);max-width:680px;line-height:1.7;font-weight:300;margin-bottom:36px;margin-top:-24px;}
+.divider{height:1px;background:var(--border);}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:720px){.skills-grid{grid-template-columns:1fr;}}
+.skill-group{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;transition:border-color .2s;}
+.skill-group:hover{border-color:var(--border2);}
+.skill-group-label{font-family:var(--mono);font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:4px;transition:all .15s;}
+.tag.hi{color:var(--accent);background:var(--accent-dim);border-color:rgba(79,127,255,.2);}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:28px;}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),var(--border) 80%,transparent);}
+.tl-item{position:relative;margin-bottom:32px;opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s;}
+.tl-item.vis{opacity:1;transform:translateY(0);}
+.tl-dot{position:absolute;left:-32px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 8px rgba(79,127,255,.4);}
+.tl-dot.dim{background:var(--text3);box-shadow:none;}
+.exp-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;transition:border-color .2s,background .2s;}
+.exp-card:hover{border-color:var(--border2);background:var(--surface2);}
+.exp-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:6px;flex-wrap:wrap;}
+.exp-role{font-family:var(--display);font-size:17px;font-weight:600;color:var(--text);letter-spacing:-.02em;}
+.exp-meta{font-family:var(--mono);font-size:11px;color:var(--text3);white-space:nowrap;}
+.exp-co{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:12px;}
+.exp-desc{font-size:14px;color:var(--text2);line-height:1.65;margin-bottom:14px;font-weight:300;}
+.badges{display:flex;flex-wrap:wrap;gap:6px;}
+.badge{font-family:var(--mono);font-size:11px;padding:4px 10px;border-radius:4px;border:1px solid;}
+.badge.g{color:var(--green);border-color:rgba(34,197,94,.2);background:rgba(34,197,94,.06);}
+.badge.b{color:var(--accent);border-color:rgba(79,127,255,.2);background:var(--accent-dim);}
+.badge.a{color:var(--amber);border-color:rgba(245,158,11,.2);background:rgba(245,158,11,.06);}
+.badge.t{color:var(--accent3);border-color:rgba(45,212,191,.2);background:rgba(45,212,191,.06);}
+
+/* TABS */
+.tab-row{display:flex;gap:4px;margin-bottom:20px;flex-wrap:wrap;}
+.tab-btn{font-family:var(--mono);font-size:11px;color:var(--text2);background:var(--surface);border:1px solid var(--border);padding:7px 14px;border-radius:6px;cursor:pointer;transition:all .15s;letter-spacing:.04em;}
+.tab-btn.on{color:var(--accent);background:var(--accent-dim);border-color:rgba(79,127,255,.3);}
+.tab-panel{display:none;}
+.tab-panel.on{display:block;}
+
+/* DASHBOARD */
+.dash-frame{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.dash-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--surface2);border-bottom:1px solid var(--border);}
+.dash-bar-left{display:flex;align-items:center;gap:10px;}
+.dash-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);}
+.dash-title{font-family:var(--display);font-size:14px;font-weight:600;color:var(--text);}
+.dash-chips{display:flex;gap:8px;}
+.dash-chip{font-family:var(--mono);font-size:10px;color:var(--text2);border:1px solid var(--border2);border-radius:4px;padding:3px 8px;}
+.dash-body{padding:20px;display:flex;flex-direction:column;gap:16px;}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+@media(max-width:640px){.kpi-row{grid-template-columns:repeat(2,1fr);}}
+.kpi{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px;}
+.kpi-lbl{font-family:var(--mono);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
+.kpi-val{font-family:var(--display);font-size:22px;font-weight:700;color:var(--text);letter-spacing:-.02em;}
+.kpi-delta{font-family:var(--mono);font-size:11px;margin-top:3px;}
+.kpi-delta.up{color:var(--green);}
+.kpi-delta.dn{color:var(--red);}
+.chart-2col{display:grid;grid-template-columns:2fr 1fr;gap:12px;}
+@media(max-width:640px){.chart-2col{grid-template-columns:1fr;}}
+.chart-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px;}
+.chart-lbl{font-family:var(--mono);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;}
+.bar-chart{display:flex;align-items:flex-end;gap:5px;height:88px;}
+.bar{border-radius:3px 3px 0 0;flex:1;cursor:default;}
+.bar-lbl{font-family:var(--mono);font-size:9px;color:var(--text3);text-align:center;margin-top:4px;}
+.lc-wrap{height:88px;}
+.lc-wrap svg{width:100%;height:100%;}
+.attr-tbl{width:100%;border-collapse:collapse;}
+.attr-tbl th{font-family:var(--mono);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;text-align:left;padding:6px 10px;border-bottom:1px solid var(--border);}
+.attr-tbl td{font-family:var(--mono);font-size:11px;color:var(--text2);padding:7px 10px;border-bottom:1px solid var(--border);}
+.attr-tbl td:first-child{color:var(--text);}
+.attr-tbl tr:last-child td{border-bottom:none;}
+.abar{height:6px;border-radius:3px;display:inline-block;vertical-align:middle;margin-right:6px;}
+.funnel-rows{display:flex;flex-direction:column;gap:6px;}
+.f-row{display:flex;align-items:center;gap:8px;}
+.f-lbl{font-family:var(--mono);font-size:10px;color:var(--text3);width:110px;flex-shrink:0;text-align:right;}
+.f-outer{flex:1;background:var(--border);border-radius:3px;height:18px;overflow:hidden;}
+.f-inner{height:100%;border-radius:3px;display:flex;align-items:center;padding:0 8px;}
+.f-val{font-family:var(--mono);font-size:9px;color:white;}
+.legend-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;}
+.legend-item{font-family:var(--mono);font-size:9px;color:var(--text3);}
+
+/* MMM */
+.mmm-flow{display:flex;flex-direction:column;}
+.mmm-step{display:grid;grid-template-columns:52px 1fr;gap:20px;position:relative;}
+.mmm-step:not(:last-child)::after{content:'';position:absolute;left:25px;top:54px;bottom:-8px;width:2px;background:linear-gradient(to bottom,var(--border2),transparent);}
+.mmm-num{width:52px;height:52px;border-radius:12px;background:var(--surface2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:18px;font-weight:700;color:var(--accent);flex-shrink:0;margin-bottom:36px;}
+.mmm-body{padding-bottom:36px;}
+.mmm-title{font-family:var(--display);font-size:16px;font-weight:600;color:var(--text);letter-spacing:-.02em;margin-bottom:6px;}
+.mmm-desc{font-size:13.5px;color:var(--text2);line-height:1.65;font-weight:300;margin-bottom:10px;}
+.mmm-chips{display:flex;flex-wrap:wrap;gap:5px;}
+.mmm-chip{font-family:var(--mono);font-size:10px;color:var(--text3);background:var(--surface);border:1px solid var(--border);padding:3px 9px;border-radius:4px;}
+.mmm-chip.on{color:var(--accent);background:var(--accent-dim);border-color:rgba(79,127,255,.2);}
+
+/* JOURNEY */
+.journey{display:flex;flex-direction:column;gap:12px;}
+.j-phase{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;display:grid;grid-template-columns:170px 1fr;gap:20px;align-items:start;transition:border-color .2s;}
+.j-phase:hover{border-color:var(--border2);}
+@media(max-width:640px){.j-phase{grid-template-columns:1fr;}}
+.j-phase-left{}
+.j-pnum{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;}
+.j-pname{font-family:var(--display);font-size:15px;font-weight:600;color:var(--text);letter-spacing:-.02em;margin:2px 0;}
+.j-chan{font-family:var(--mono);font-size:10px;color:var(--accent);}
+.j-metrics{display:flex;flex-direction:column;gap:6px;}
+.j-mrow{display:flex;align-items:center;gap:8px;}
+.j-mlbl{font-family:var(--mono);font-size:10px;color:var(--text3);width:110px;flex-shrink:0;}
+.j-mbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;}
+.j-mfill{height:100%;border-radius:3px;}
+.j-mval{font-family:var(--mono);font-size:10px;color:var(--text2);width:60px;text-align:right;}
+.j-insight{font-family:var(--mono);font-size:10px;color:var(--accent3);background:rgba(45,212,191,.06);border:1px solid rgba(45,212,191,.15);border-radius:4px;padding:4px 9px;margin-top:8px;display:inline-block;}
+
+/* PINE */
+.pine-wrap{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.pine-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--surface2);border-bottom:1px solid var(--border);}
+.pine-dots{display:flex;gap:6px;}
+.pine-dot{width:11px;height:11px;border-radius:50%;}
+.pine-fname{font-family:var(--mono);font-size:12px;color:var(--text2);margin-left:10px;letter-spacing:.04em;}
+.pine-badge{font-family:var(--mono);font-size:10px;color:var(--accent3);background:rgba(45,212,191,.1);border:1px solid rgba(45,212,191,.2);padding:3px 10px;border-radius:20px;}
+.pine-cols{display:grid;grid-template-columns:1fr 1fr;}
+@media(max-width:800px){.pine-cols{grid-template-columns:1fr;}}
+.pine-code-pane{border-right:1px solid var(--border);overflow:hidden;}
+@media(max-width:800px){.pine-code-pane{border-right:none;border-bottom:1px solid var(--border);}}
+.pine-scroll{overflow-y:auto;max-height:580px;padding:18px 0;}
+.pine-scroll::-webkit-scrollbar{width:3px;}
+.pine-scroll::-webkit-scrollbar-thumb{background:var(--border2);}
+pre.pine{font-family:var(--mono);font-size:11.5px;line-height:1.75;padding:0 20px;white-space:pre;color:var(--text2);}
+.cm{color:var(--text3);font-style:italic;}
+.kw{color:#c792ea;}
+.fn{color:#82aaff;}
+.str{color:#c3e88d;}
+.nm{color:#f78c6c;}
+.vr{color:var(--accent3);}
+.sec{color:var(--amber);}
+.pine-ann{padding:24px;display:flex;flex-direction:column;gap:18px;overflow-y:auto;max-height:580px;}
+.pine-ann::-webkit-scrollbar{width:3px;}
+.pine-ann::-webkit-scrollbar-thumb{background:var(--border2);}
+.ann{border-left:2px solid var(--border2);padding-left:14px;}
+.ann.bull{border-color:var(--green);}
+.ann.bear{border-color:var(--red);}
+.ann.sys{border-color:var(--accent);}
+.ann.flt{border-color:var(--amber);}
+.ann.web{border-color:var(--accent3);}
+.ann-lbl{font-family:var(--mono);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;}
+.ann-title{font-family:var(--display);font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.ann-desc{font-size:12.5px;color:var(--text2);line-height:1.6;font-weight:300;}
+code.ic{font-family:var(--mono);font-size:11px;color:var(--accent3);}
+
+/* WEB3 */
+.web3-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:720px){.web3-grid{grid-template-columns:1fr;}}
+.w3-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;position:relative;overflow:hidden;transition:border-color .2s;}
+.w3-card:hover{border-color:var(--border2);}
+.w3-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent3),var(--accent));opacity:.6;}
+.w3-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.w3-icon{width:42px;height:42px;border-radius:10px;background:rgba(45,212,191,.1);border:1px solid rgba(45,212,191,.2);display:flex;align-items:center;justify-content:center;font-size:20px;}
+.w3-name{font-family:var(--display);font-size:18px;font-weight:700;color:var(--text);}
+.w3-chain{font-family:var(--mono);font-size:10px;color:var(--accent3);letter-spacing:.08em;text-transform:uppercase;}
+.w3-desc{font-size:13.5px;color:var(--text2);line-height:1.65;font-weight:300;margin-bottom:18px;}
+.w3-links{display:flex;gap:8px;flex-wrap:wrap;}
+.w3-link{font-family:var(--mono);font-size:11px;color:var(--text2);text-decoration:none;padding:5px 12px;border:1px solid var(--border2);border-radius:6px;transition:all .15s;}
+.w3-link:hover{color:var(--text);border-color:var(--text3);}
+
+/* CONTACT */
+.cta{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:48px;text-align:center;position:relative;overflow:hidden;}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,var(--accent-glow),transparent);pointer-events:none;}
+.cta-title{font-family:var(--display);font-size:32px;font-weight:700;letter-spacing:-.03em;margin-bottom:12px;position:relative;}
+.cta-sub{font-size:15px;color:var(--text2);max-width:400px;margin:0 auto 32px;font-weight:300;position:relative;}
+.cta-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;position:relative;}
+footer{padding:32px 0;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.foot-copy{font-family:var(--mono);font-size:11px;color:var(--text3);}
+.foot-links{display:flex;gap:20px;}
+.foot-links a{font-family:var(--mono);font-size:11px;color:var(--text3);text-decoration:none;transition:color .15s;}
+.foot-links a:hover{color:var(--text2);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.hero-content>*{animation:fadeUp .6s ease forwards;opacity:0;}
+.hero-eyebrow{animation-delay:.1s;}.hero-name{animation-delay:.2s;}.hero-desc{animation-delay:.3s;}.hero-actions{animation-delay:.4s;}.hero-stats{animation-delay:.5s;}
+.live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:6px;animation:pulse 2s infinite;}
+@media(max-width:600px){.nav-links{display:none;}.cta{padding:32px 20px;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#111316"/><rect x=".5" y=".5" width="31" height="31" rx="7.5" stroke="#1e2128"/><line x1="6" y1="9" x2="16" y2="9" stroke="#4f7fff" stroke-width="1.5" stroke-linecap="round"/><line x1="11" y1="9" x2="11" y2="23" stroke="#4f7fff" stroke-width="1.5" stroke-linecap="round"/><line x1="18" y1="23" x2="22" y2="9" stroke="#4f7fff" stroke-width="1.5" stroke-linecap="round"/><line x1="22" y1="9" x2="26" y2="23" stroke="#4f7fff" stroke-width="1.5" stroke-linecap="round"/><line x1="19.5" y1="17" x2="24.5" y2="17" stroke="#4f7fff" stroke-width="1.5" stroke-linecap="round"/><circle cx="26" cy="9" r="1.5" fill="#2dd4bf"/></svg>
+      <span class="logo-text">Taj <span>Anderson</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#dashboards">Dashboards</a></li>
+      <li><a href="#mmm">MMM</a></li>
+      <li><a href="#trading">Trading</a></li>
+      <li><a href="#web3">Web3</a></li>
+    </ul>
+    <a href="mailto:taj651@hotmail.com" class="nav-badge">↗ Open to Roles</a>
+  </div>
+</nav>
+
+<div class="shell">
+
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span class="live-dot"></span>Staff / Principal Analytics Leader · West Palm Beach, FL</div>
+    <h1 class="hero-name">Measurement<br><span class="accent-word">Systems.</span><br>Real Decisions.</h1>
+    <p class="hero-desc">8+ years building analytics infrastructure that shapes how companies allocate capital, scale channels, and understand their customers. <strong>Fluent in SQL, Python, and statistical modeling</strong> — with active practice in quant finance, LLM tooling, and Web3 analytics.</p>
+    <div class="hero-actions">
+      <a href="mailto:taj651@hotmail.com" class="btn-primary">Get in Touch</a>
+      <a href="https://www.linkedin.com/in/taj-anderson-39a025137/" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+      <a href="https://x.com/ZaneBaseGuy" target="_blank" class="btn-ghost">X / Web3 ↗</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">8<span>+</span></div><div class="stat-label">Years Experience</div></div>
+      <div><div class="stat-num">$10<span>M+</span></div><div class="stat-label">Budget Influenced</div></div>
+      <div><div class="stat-num">20<span>%</span></div><div class="stat-label">CAC Reduction</div></div>
+      <div><div class="stat-num">1<span>M+</span></div><div class="stat-label">CRM Records Modeled</div></div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header"><span class="section-num">01</span><h2 class="section-title">Core Competencies</h2><div class="section-line"></div></div>
+  <div class="skills-grid">
+    <div class="skill-group"><div class="skill-group-label">Analytics & Measurement</div><div class="skill-tags"><span class="tag hi">MMM</span><span class="tag hi">Causal Inference</span><span class="tag hi">Incrementality Testing</span><span class="tag">A/B Experimentation</span><span class="tag">Attribution Modeling</span><span class="tag">Funnel Analysis</span><span class="tag">Retention Modeling</span><span class="tag">KPI Design</span><span class="tag">Product Analytics</span></div></div>
+    <div class="skill-group"><div class="skill-group-label">Modeling & Statistics</div><div class="skill-tags"><span class="tag hi">Predictive Modeling</span><span class="tag hi">Time-Series (Prophet, ARIMA)</span><span class="tag">Regression (Log, Saturation)</span><span class="tag">Cohort & Survival Analysis</span><span class="tag">Anomaly Detection</span><span class="tag">Diminishing Returns</span><span class="tag">Quant Backtesting</span></div></div>
+    <div class="skill-group"><div class="skill-group-label">Data & Tools</div><div class="skill-tags"><span class="tag hi">SQL (Advanced)</span><span class="tag hi">Python</span><span class="tag">pandas · numpy · scikit-learn</span><span class="tag">statsmodels · Prophet</span><span class="tag">Tableau · Power BI</span><span class="tag">GA4 · Rockerbox</span><span class="tag">BigQuery · dbt</span></div></div>
+    <div class="skill-group"><div class="skill-group-label">Emerging & Strategy</div><div class="skill-tags"><span class="tag hi">LLM Tooling</span><span class="tag hi">Web3 / On-Chain Analytics</span><span class="tag hi">Pine Script v6</span><span class="tag">Tokenomics Research</span><span class="tag">Prompt Engineering</span><span class="tag">CAC & LTV Optimization</span><span class="tag">Budget Allocation</span></div></div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header"><span class="section-num">02</span><h2 class="section-title">Experience</h2><div class="section-line"></div></div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><div class="exp-card"><div class="exp-header"><span class="exp-role">Senior Marketing Analyst — Business Analytics</span><span class="exp-meta">Jun 2022 — Present</span></div><div class="exp-co">SimplePractice · SaaS · Health &amp; Wellness</div><p class="exp-desc">Own the full measurement and analytics infrastructure — attribution, MMM, product analytics, and experimentation. Embedded IC partner to VPs across Marketing, Product, Customer Success, and Sales.</p><div class="badges"><span class="badge g">↓ 20% CAC</span><span class="badge b">$10M+ Budget Guided</span><span class="badge t">16% Conversion Lift</span><span class="badge a">60% Latency Reduction</span><span class="badge g">↑ 40% Social Performance</span></div></div></div>
+    <div class="tl-item"><div class="tl-dot dim"></div><div class="exp-card"><div class="exp-header"><span class="exp-role">Senior Business Intelligence Engineer</span><span class="exp-meta">Jan 2021 — Jun 2022</span></div><div class="exp-co">REEF Technology · Logistics · 4,500+ Locations</div><p class="exp-desc">Owned BI infrastructure across operations, finance, and workforce planning. Built forecasting models, real-time dashboards, and automated pipelines consumed by 20+ stakeholders.</p><div class="badges"><span class="badge g">↓ 20% Delivery Time</span><span class="badge g">↓ 10% Labor Costs</span><span class="badge a">↓ 40% Report Prep</span></div></div></div>
+    <div class="tl-item"><div class="tl-dot dim"></div><div class="exp-card"><div class="exp-header"><span class="exp-role">Customer Experience Insight Analyst</span><span class="exp-meta">Mar 2020 — Dec 2020</span></div><div class="exp-co">ADT · Security Technology</div><p class="exp-desc">CX analytics across ecommerce, field services, and call center environments — linking behavioral signals to conversion, churn risk, and cost per acquisition.</p><div class="badges"><span class="badge g">↓ 10% Spam Rate</span><span class="badge g">↓ 8% Cost Per Lead</span><span class="badge t">Clickstream → UX Impact</span></div></div></div>
+    <div class="tl-item"><div class="tl-dot dim"></div><div class="exp-card"><div class="exp-header"><span class="exp-role">Senior Analyst — Consumer Services</span><span class="exp-meta">Aug 2017 — Mar 2020</span></div><div class="exp-co">Newell Brands · Fortune 500 CPG · 50+ Product Lines</div><p class="exp-desc">Python ML pipelines over 1M+ CRM records, anomaly detection systems, and feature engineering for production ML compliance workflows.</p><div class="badges"><span class="badge g">↓ 35% Processing Time</span><span class="badge b">1M+ CRM Records</span><span class="badge a">↑ 10% Agent Utilization</span></div></div></div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- DASHBOARDS -->
+<section id="dashboards">
+  <div class="section-header"><span class="section-num">03</span><h2 class="section-title">Analytics Dashboards</h2><div class="section-line"></div></div>
+  <p class="section-sub">Representative dashboard frameworks built in Tableau and Power BI across marketing attribution, operational BI, and customer lifecycle analytics. Layouts reflect real work; metrics are illustrative.</p>
+  <div class="tab-row">
+    <button class="tab-btn on" onclick="switchTab(this,'d1')">Marketing Attribution</button>
+    <button class="tab-btn" onclick="switchTab(this,'d2')">Operational BI — REEF</button>
+    <button class="tab-btn" onclick="switchTab(this,'d3')">Customer Lifecycle — ADT</button>
+  </div>
+
+  <div class="tab-panel on" id="d1">
+    <div class="dash-frame">
+      <div class="dash-bar"><div class="dash-bar-left"><div class="dash-dot"></div><span class="dash-title">Marketing Attribution &amp; Channel Performance</span></div><div class="dash-chips"><span class="dash-chip">Q4 2024</span><span class="dash-chip">All Channels</span></div></div>
+      <div class="dash-body">
+        <div class="kpi-row">
+          <div class="kpi"><div class="kpi-lbl">Total Conversions</div><div class="kpi-val">8,412</div><div class="kpi-delta up">↑ 16.3% QoQ</div></div>
+          <div class="kpi"><div class="kpi-lbl">Blended CAC</div><div class="kpi-val">$143</div><div class="kpi-delta up">↓ 20% YoY</div></div>
+          <div class="kpi"><div class="kpi-lbl">LTV : CAC</div><div class="kpi-val">4.2×</div><div class="kpi-delta up">↑ 0.6× QoQ</div></div>
+          <div class="kpi"><div class="kpi-lbl">Ad Spend</div><div class="kpi-val">$1.2M</div><div class="kpi-delta dn">+5% QoQ</div></div>
+        </div>
+        <div class="chart-2col">
+          <div class="chart-card">
+            <div class="chart-lbl">Weekly Conversions by Channel</div>
+            <div class="bar-chart" id="bc1"></div>
+            <div class="legend-row"><span class="legend-item">■ <span style="color:#4f7fff">Paid Search</span></span><span class="legend-item">■ <span style="color:#2dd4bf">Paid Social</span></span><span class="legend-item">■ <span style="color:#22c55e">Organic</span></span><span class="legend-item">■ <span style="color:#f59e0b">Direct</span></span></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-lbl">Revenue Attribution</div>
+            <table class="attr-tbl">
+              <thead><tr><th>Channel</th><th>Share</th><th>CAC</th></tr></thead>
+              <tbody>
+                <tr><td>Paid Search</td><td><span class="abar" style="width:64px;background:#4f7fff"></span>38%</td><td style="color:var(--green)">$118</td></tr>
+                <tr><td>Paid Social</td><td><span class="abar" style="width:42px;background:#2dd4bf"></span>25%</td><td style="color:var(--amber)">$167</td></tr>
+                <tr><td>Organic SEO</td><td><span class="abar" style="width:34px;background:#22c55e"></span>20%</td><td style="color:var(--green)">$44</td></tr>
+                <tr><td>Direct</td><td><span class="abar" style="width:18px;background:#f59e0b"></span>11%</td><td style="color:var(--green)">$29</td></tr>
+                <tr><td>Referral</td><td><span class="abar" style="width:10px;background:#7b5ea7"></span>6%</td><td style="color:var(--green)">$61</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-lbl">CAC Trend — 12-Month Rolling (Rockerbox + GA4 Unified)</div>
+          <div class="lc-wrap"><svg viewBox="0 0 800 88" preserveAspectRatio="none"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4f7fff" stop-opacity=".2"/><stop offset="100%" stop-color="#4f7fff" stop-opacity="0"/></linearGradient></defs><path d="M0,62 L67,59 L133,64 L200,56 L267,51 L333,49 L400,45 L467,41 L533,37 L600,31 L667,26 L733,21 L800,18" fill="none" stroke="#4f7fff" stroke-width="2"/><path d="M0,62 L67,59 L133,64 L200,56 L267,51 L333,49 L400,45 L467,41 L533,37 L600,31 L667,26 L733,21 L800,18 L800,88 L0,88 Z" fill="url(#g1)"/><path d="M0,48 L67,46 L133,50 L200,43 L267,39 L333,38 L400,35 L467,32 L533,29 L600,24 L667,20 L733,16 L800,13" fill="none" stroke="#2dd4bf" stroke-width="1.5" stroke-dasharray="4,3"/></svg></div>
+          <div class="legend-row"><span class="legend-item" style="font-size:10px;">— <span style="color:#4f7fff">Blended CAC</span></span><span class="legend-item" style="font-size:10px;">--- <span style="color:#2dd4bf">Paid-Only CAC</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="d2">
+    <div class="dash-frame">
+      <div class="dash-bar"><div class="dash-bar-left"><div class="dash-dot" style="background:var(--accent3)"></div><span class="dash-title">Operational KPI Dashboard — Logistics &amp; Fleet</span></div><div class="dash-chips"><span class="dash-chip">Live · Samsara API</span><span class="dash-chip">All Regions</span></div></div>
+      <div class="dash-body">
+        <div class="kpi-row">
+          <div class="kpi"><div class="kpi-lbl">Avg Delivery Time</div><div class="kpi-val">38 min</div><div class="kpi-delta up">↓ 20% vs baseline</div></div>
+          <div class="kpi"><div class="kpi-lbl">Fleet Utilization</div><div class="kpi-val">84%</div><div class="kpi-delta up">↑ 11% MoM</div></div>
+          <div class="kpi"><div class="kpi-lbl">Labor Cost/Route</div><div class="kpi-val">$14.20</div><div class="kpi-delta up">↓ 10% YoY</div></div>
+          <div class="kpi"><div class="kpi-lbl">On-Time Rate</div><div class="kpi-val">91%</div><div class="kpi-delta up">↑ 7pts QoQ</div></div>
+        </div>
+        <div class="chart-2col">
+          <div class="chart-card">
+            <div class="chart-lbl">Delivery Volume by Region (Weekly)</div>
+            <div class="bar-chart" id="bc2"></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-lbl">Labor Cost Distribution</div>
+            <div class="funnel-rows">
+              <div class="f-row"><span class="f-lbl">Driver Hours</span><div class="f-outer"><div class="f-inner" style="width:78%;background:#4f7fff"><span class="f-val">78%</span></div></div></div>
+              <div class="f-row"><span class="f-lbl">Dispatch Ops</span><div class="f-outer"><div class="f-inner" style="width:14%;background:#2dd4bf"><span class="f-val">14%</span></div></div></div>
+              <div class="f-row"><span class="f-lbl">Overtime</span><div class="f-outer"><div class="f-inner" style="width:8%;background:#f59e0b"><span class="f-val">8%</span></div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-lbl">Demand Forecast vs Actual — Time-Series Model (Regression + Seasonality)</div>
+          <div class="lc-wrap"><svg viewBox="0 0 800 88" preserveAspectRatio="none"><defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2dd4bf" stop-opacity=".15"/><stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/></linearGradient></defs><path d="M0,52 L67,46 L133,58 L200,41 L267,50 L333,36 L400,44 L467,31 L533,40 L600,26 L667,33 L733,21 L800,29" fill="none" stroke="#2dd4bf" stroke-width="2"/><path d="M0,54 L67,45 L133,60 L200,42 L267,48 L333,38 L400,42 L467,33 L533,38 L600,28 L667,31 L733,23 L800,27" fill="none" stroke="#4f7fff" stroke-width="1.5" stroke-dasharray="5,3"/><path d="M0,52 L67,46 L133,58 L200,41 L267,50 L333,36 L400,44 L467,31 L533,40 L600,26 L667,33 L733,21 L800,29 L800,88 L0,88 Z" fill="url(#g2)"/></svg></div>
+          <div class="legend-row"><span class="legend-item" style="font-size:10px;">— <span style="color:#2dd4bf">Actual Volume</span></span><span class="legend-item" style="font-size:10px;">--- <span style="color:#4f7fff">Forecast</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="d3">
+    <div class="dash-frame">
+      <div class="dash-bar"><div class="dash-bar-left"><div class="dash-dot" style="background:var(--amber)"></div><span class="dash-title">Customer Lifecycle Analytics — Ecommerce &amp; Field Ops</span></div><div class="dash-chips"><span class="dash-chip">All Segments</span><span class="dash-chip">FY 2020</span></div></div>
+      <div class="dash-body">
+        <div class="kpi-row">
+          <div class="kpi"><div class="kpi-lbl">Conversion Rate</div><div class="kpi-val">3.8%</div><div class="kpi-delta up">↑ post UX changes</div></div>
+          <div class="kpi"><div class="kpi-lbl">Cost Per Lead</div><div class="kpi-val">$38</div><div class="kpi-delta up">↓ 8% routing model</div></div>
+          <div class="kpi"><div class="kpi-lbl">Churn Risk Flagged</div><div class="kpi-val">12%</div><div class="kpi-delta up">Identified early</div></div>
+          <div class="kpi"><div class="kpi-lbl">SMS Spam Rate</div><div class="kpi-val">2.1%</div><div class="kpi-delta up">↓ 10% reduction</div></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-lbl">Conversion Funnel — Digital Acquisition (Clickstream → CRM)</div>
+          <div class="funnel-rows" style="padding:8px 0;">
+            <div class="f-row"><span class="f-lbl" style="width:130px;font-size:11px;">Site Visit</span><div class="f-outer"><div class="f-inner" style="width:100%;background:#4f7fff"><span class="f-val">100% — 42,000</span></div></div></div>
+            <div class="f-row"><span class="f-lbl" style="width:130px;font-size:11px;">Product Page</span><div class="f-outer"><div class="f-inner" style="width:68%;background:#4f7fff;opacity:.82"><span class="f-val">68% — 28,560</span></div></div></div>
+            <div class="f-row"><span class="f-lbl" style="width:130px;font-size:11px;">Quote Request</span><div class="f-outer"><div class="f-inner" style="width:22%;background:#2dd4bf"><span class="f-val">22% — 9,240</span></div></div></div>
+            <div class="f-row"><span class="f-lbl" style="width:130px;font-size:11px;">Call / Chat</span><div class="f-outer"><div class="f-inner" style="width:10%;background:#f59e0b"><span class="f-val">10% — 4,200</span></div></div></div>
+            <div class="f-row"><span class="f-lbl" style="width:130px;font-size:11px;">Conversion</span><div class="f-outer"><div class="f-inner" style="width:3.8%;background:#22c55e;min-width:100px"><span class="f-val">3.8% — 1,596</span></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- MMM METHODOLOGY -->
+<section id="mmm">
+  <div class="section-header"><span class="section-num">04</span><h2 class="section-title">Media Mix Modeling — Methodology</h2><div class="section-line"></div></div>
+  <p class="section-sub">End-to-end MMM framework built and owned at SimplePractice. Designed to quantify true channel contribution, model saturation and diminishing returns, and drive $10M+ in annual budget allocation decisions.</p>
+  <div class="mmm-flow">
+    <div class="mmm-step">
+      <div class="mmm-num">1</div>
+      <div class="mmm-body">
+        <div class="mmm-title">Data Integration &amp; Preparation</div>
+        <p class="mmm-desc">Unified spend, impression, and conversion data across all paid and organic channels from GA4, Rockerbox, and platform APIs. Validated data quality, handled missing values, and constructed a clean time-series panel at weekly granularity covering 2+ years of history.</p>
+        <div class="mmm-chips"><span class="mmm-chip on">GA4</span><span class="mmm-chip on">Rockerbox</span><span class="mmm-chip on">BigQuery</span><span class="mmm-chip">Python / pandas</span><span class="mmm-chip">SQL</span><span class="mmm-chip">dbt</span></div>
+      </div>
+    </div>
+    <div class="mmm-step">
+      <div class="mmm-num">2</div>
+      <div class="mmm-body">
+        <div class="mmm-title">Adstock &amp; Saturation Transformations</div>
+        <p class="mmm-desc">Applied geometric decay adstock to model carryover effects after campaigns end. Used Hill function saturation curves to model diminishing returns per channel — distinguishing channels with remaining headroom from those already saturated, enabling precise marginal ROI estimates.</p>
+        <div class="mmm-chips"><span class="mmm-chip on">Adstock (Geometric Decay)</span><span class="mmm-chip on">Hill Function Saturation</span><span class="mmm-chip">Diminishing Returns</span><span class="mmm-chip">Lag Optimization</span></div>
+      </div>
+    </div>
+    <div class="mmm-step">
+      <div class="mmm-num">3</div>
+      <div class="mmm-body">
+        <div class="mmm-title">Regression Framework &amp; Control Variables</div>
+        <p class="mmm-desc">Log-log regression with channel spend as inputs, revenue/conversions as outputs. Controlled for seasonality (Fourier terms), pricing changes, product launches, and macro trends — isolating true media contribution from external noise and confounders.</p>
+        <div class="mmm-chips"><span class="mmm-chip on">Log-Log Regression</span><span class="mmm-chip on">Fourier Seasonality</span><span class="mmm-chip">statsmodels</span><span class="mmm-chip">Multicollinearity Controls</span><span class="mmm-chip">Interaction Terms</span></div>
+      </div>
+    </div>
+    <div class="mmm-step">
+      <div class="mmm-num">4</div>
+      <div class="mmm-body">
+        <div class="mmm-title">Incrementality Validation</div>
+        <p class="mmm-desc">Validated MMM outputs against geo-based holdout experiments. The $40K/week Paid Social + Bing non-brand test produced a 16% conversion lift and 5% CAC increase — confirming model predictions within confidence bounds and becoming the organizational standard for channel validation.</p>
+        <div class="mmm-chips"><span class="mmm-chip on">Geo Holdout Testing</span><span class="mmm-chip on">$40K/wk Incrementality Experiment</span><span class="mmm-chip">Causal Inference</span><span class="mmm-chip">Confidence Intervals</span></div>
+      </div>
+    </div>
+    <div class="mmm-step">
+      <div class="mmm-num">5</div>
+      <div class="mmm-body">
+        <div class="mmm-title">Budget Optimization &amp; Executive Output</div>
+        <p class="mmm-desc">Used calibrated model to run budget scenario simulations — optimizing channel allocation to maximize expected conversions at a target CAC. Translated outputs into Tableau scenario dashboards for VP-level quarterly budget reallocation decisions.</p>
+        <div class="mmm-chips"><span class="mmm-chip on">Budget Scenario Simulation</span><span class="mmm-chip on">Marginal ROI Curves</span><span class="mmm-chip">scipy.optimize</span><span class="mmm-chip">Tableau</span><span class="mmm-chip">Executive Reporting</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- CUSTOMER JOURNEY -->
+<section id="journey">
+  <div class="section-header"><span class="section-num">05</span><h2 class="section-title">Customer Analytics Journey Framework</h2><div class="section-line"></div></div>
+  <p class="section-sub">Full-lifecycle measurement architecture tracking the customer from first impression through retention and expansion. Applied across SaaS, security technology, and CPG environments.</p>
+  <div class="journey">
+    <div class="j-phase">
+      <div class="j-phase-left"><div class="j-pnum">Phase 01</div><div class="j-pname">Awareness &amp; Acquisition</div><div class="j-chan">Paid Search · Social · SEO</div></div>
+      <div class="j-metrics">
+        <div class="j-mrow"><span class="j-mlbl">Impression → Click</span><div class="j-mbar"><div class="j-mfill" style="width:40%;background:#4f7fff"></div></div><span class="j-mval">CTR 3.2%</span></div>
+        <div class="j-mrow"><span class="j-mlbl">Paid CAC</span><div class="j-mbar"><div class="j-mfill" style="width:65%;background:#f59e0b"></div></div><span class="j-mval">$143 avg</span></div>
+        <div class="j-mrow"><span class="j-mlbl">Channel Count</span><div class="j-mbar"><div class="j-mfill" style="width:75%;background:#22c55e"></div></div><span class="j-mval">6 active</span></div>
+        <span class="j-insight">MMM + Rockerbox unified attribution</span>
+      </div>
+    </div>
+    <div class="j-phase">
+      <div class="j-phase-left"><div class="j-pnum">Phase 02</div><div class="j-pname">Activation &amp; Conversion</div><div class="j-chan">Landing Page · Trial · Demo</div></div>
+      <div class="j-metrics">
+        <div class="j-mrow"><span class="j-mlbl">Visit → Trial</span><div class="j-mbar"><div class="j-mfill" style="width:55%;background:#4f7fff"></div></div><span class="j-mval">22% CVR</span></div>
+        <div class="j-mrow"><span class="j-mlbl">Trial → Paid</span><div class="j-mbar"><div class="j-mfill" style="width:38%;background:#2dd4bf"></div></div><span class="j-mval">38% rate</span></div>
+        <div class="j-mrow"><span class="j-mlbl">Time to Convert</span><div class="j-mbar"><div class="j-mfill" style="width:45%;background:#f59e0b"></div></div><span class="j-mval">14 days</span></div>
+        <span class="j-insight">Funnel analysis + A/B experiments on key pages</span>
+      </div>
+    </div>
+    <div class="j-phase">
+      <div class="j-phase-left"><div class="j-pnum">Phase 03</div><div class="j-pname">Engagement &amp; Retention</div><div class="j-chan">Product · Email · Support</div></div>
+      <div class="j-metrics">
+        <div class="j-mrow"><span class="j-mlbl">D30 Retention</span><div class="j-mbar"><div class="j-mfill" style="width:82%;background:#22c55e"></div></div><span class="j-mval">82%</span></div>
+        <div class="j-mrow"><span class="j-mlbl">Feature Adoption</span><div class="j-mbar"><div class="j-mfill" style="width:61%;background:#4f7fff"></div></div><span class="j-mval">61% D30</span></div>
+        <div class="j-mrow"><span class="j-mlbl">Churn Risk Flagged</span><div class="j-mbar"><div class="j-mfill" style="width:12%;background:#ef4444"></div></div><span class="j-mval">12%</span></div>
+        <span class="j-insight">Cohort models + event schema (Product Eng partnership)</span>
+      </div>
+    </div>
+    <div class="j-phase">
+      <div class="j-phase-left"><div class="j-pnum">Phase 04</div><div class="j-pname">LTV &amp; Expansion</div><div class="j-chan">Upsell · Referral · Renewal</div></div>
+      <div class="j-metrics">
+        <div class="j-mrow"><span class="j-mlbl">Avg LTV</span><div class="j-mbar"><div class="j-mfill" style="width:75%;background:#7b5ea7"></div></div><span class="j-mval">$602</span></div>
+        <div class="j-mrow"><span class="j-mlbl">LTV : CAC</span><div class="j-mbar"><div class="j-mfill" style="width:84%;background:#22c55e"></div></div><span class="j-mval">4.2×</span></div>
+        <div class="j-mrow"><span class="j-mlbl">Expansion Rev %</span><div class="j-mbar"><div class="j-mfill" style="width:22%;background:#2dd4bf"></div></div><span class="j-mval">22%</span></div>
+        <span class="j-insight">Survival analysis + LTV cohort model</span>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- PINE SCRIPT / TRADING -->
+<section id="trading">
+  <div class="section-header"><span class="section-num">06</span><h2 class="section-title">Quantitative Trading System</h2><div class="section-line"></div></div>
+  <p class="section-sub">All-in-One Trend System built in Pine Script v6 for TradingView. Multi-factor systematic strategy combining Fibonacci composite MAs, weekly HTF trend confirmation, Stochastic RSI momentum, VWAP alignment, and ATR-based risk management — with volume/impulse and slope filter layers. Supports both long and short signals with configurable RR and re-entry logic.</p>
+  <div class="pine-wrap">
+    <div class="pine-topbar">
+      <div style="display:flex;align-items:center;">
+        <div class="pine-dots"><div class="pine-dot" style="background:#ef4444"></div><div class="pine-dot" style="background:#f59e0b"></div><div class="pine-dot" style="background:#22c55e"></div></div>
+        <span class="pine-fname">all_in_one_trend_system.pine — Pine Script v6</span>
+      </div>
+      <span class="pine-badge">✓ Production · 4H Chart · Long + Short</span>
+    </div>
+    <div class="pine-cols">
+      <div class="pine-code-pane">
+        <div class="pine-scroll">
+<pre class="pine"><span class="cm">//@version=6</span>
+<span class="fn">indicator</span>(<span class="str">"All-in-One Trend System"</span>,
+  overlay = <span class="kw">true</span>,
+  max_lines_count = <span class="nm">500</span>,
+  max_labels_count = <span class="nm">500</span>)
+
+<span class="sec">// ── INPUT GROUPS ────────────────────</span>
+grp_ma    = <span class="str">"Moving Averages"</span>
+grp_stoch = <span class="str">"Stochastic RSI (internal)"</span>
+grp_trend = <span class="str">"Trend Logic"</span>
+grp_sys   = <span class="str">"System / Risk"</span>
+grp_vis   = <span class="str">"Visibility / Layout"</span>
+
+<span class="sec">// ── WEEKLY SMA LENGTHS ──────────────</span>
+<span class="vr">len50w</span>  = <span class="fn">input.int</span>(<span class="nm">50</span>,  <span class="str">"50W SMA"</span>,  group=grp_ma)
+<span class="vr">len100w</span> = <span class="fn">input.int</span>(<span class="nm">100</span>, <span class="str">"100W SMA"</span>, group=grp_ma)
+<span class="vr">len200w</span> = <span class="fn">input.int</span>(<span class="nm">200</span>, <span class="str">"200W SMA"</span>, group=grp_ma)
+
+<span class="sec">// ── FIBONACCI EMA LENGTHS ───────────</span>
+<span class="vr">fibLen1</span> = <span class="fn">input.int</span>(<span class="nm">8</span>,  <span class="str">"Fib EMA 1"</span>, group=grp_ma)
+<span class="vr">fibLen2</span> = <span class="fn">input.int</span>(<span class="nm">13</span>, <span class="str">"Fib EMA 2"</span>, group=grp_ma)
+<span class="vr">fibLen3</span> = <span class="fn">input.int</span>(<span class="nm">21</span>, <span class="str">"Fib EMA 3"</span>, group=grp_ma)
+<span class="vr">fibLen4</span> = <span class="fn">input.int</span>(<span class="nm">34</span>, <span class="str">"Fib EMA 4"</span>, group=grp_ma)
+<span class="vr">fibLen5</span> = <span class="fn">input.int</span>(<span class="nm">55</span>, <span class="str">"Fib EMA 5"</span>, group=grp_ma)
+
+<span class="sec">// ── WEEKLY MAs (HTF via security) ───</span>
+<span class="vr">sma50w</span>  = <span class="fn">request.security</span>(
+  syminfo.tickerid, <span class="str">"W"</span>, <span class="fn">ta.sma</span>(close, <span class="vr">len50w</span>))
+<span class="vr">sma100w</span> = <span class="fn">request.security</span>(
+  syminfo.tickerid, <span class="str">"W"</span>, <span class="fn">ta.sma</span>(close, <span class="vr">len100w</span>))
+<span class="vr">sma200w</span> = <span class="fn">request.security</span>(
+  syminfo.tickerid, <span class="str">"W"</span>, <span class="fn">ta.sma</span>(close, <span class="vr">len200w</span>))
+
+<span class="sec">// ── FIBONACCI COMPOSITE MA ──────────</span>
+<span class="vr">ema1</span> = <span class="fn">ta.ema</span>(close, <span class="vr">fibLen1</span>)
+<span class="vr">ema2</span> = <span class="fn">ta.ema</span>(close, <span class="vr">fibLen2</span>)
+<span class="vr">ema3</span> = <span class="fn">ta.ema</span>(close, <span class="vr">fibLen3</span>)
+<span class="vr">ema4</span> = <span class="fn">ta.ema</span>(close, <span class="vr">fibLen4</span>)
+<span class="vr">ema5</span> = <span class="fn">ta.ema</span>(close, <span class="vr">fibLen5</span>)
+
+<span class="vr">fibComposite</span> = (<span class="vr">ema1</span>+<span class="vr">ema2</span>+<span class="vr">ema3</span>+
+                 <span class="vr">ema4</span>+<span class="vr">ema5</span>) / <span class="nm">5.0</span>
+
+<span class="sec">// ── INTERNAL STOCH RSI ──────────────</span>
+<span class="vr">rsi</span>       = <span class="fn">ta.rsi</span>(close, <span class="nm">14</span>)
+<span class="vr">rsiLo</span>     = <span class="fn">ta.lowest</span>(<span class="vr">rsi</span>, <span class="nm">14</span>)
+<span class="vr">rsiHi</span>     = <span class="fn">ta.highest</span>(<span class="vr">rsi</span>, <span class="nm">14</span>)
+<span class="vr">rsiRange</span>  = <span class="vr">rsiHi</span> - <span class="vr">rsiLo</span>
+<span class="vr">stochRaw</span>  = <span class="vr">rsiRange</span> != <span class="nm">0.0</span> ?
+  (<span class="vr">rsi</span> - <span class="vr">rsiLo</span>) / <span class="vr">rsiRange</span> * <span class="nm">100.0</span> : <span class="nm">0.0</span>
+<span class="vr">k</span>         = <span class="fn">ta.sma</span>(<span class="vr">stochRaw</span>, <span class="nm">3</span>)
+
+<span class="sec">// ── TREND CONDITIONS ────────────────</span>
+<span class="vr">maBull</span>    = <span class="vr">sma50w</span> > <span class="vr">sma100w</span> <span class="kw">and</span>
+             <span class="vr">sma100w</span> > <span class="vr">sma200w</span>
+<span class="vr">maBear</span>    = <span class="vr">sma50w</span> < <span class="vr">sma100w</span> <span class="kw">and</span>
+             <span class="vr">sma100w</span> < <span class="vr">sma200w</span>
+
+<span class="vr">bullTrend</span> = <span class="vr">maBull</span>
+  <span class="kw">and</span> close > <span class="vr">fibComposite</span>
+  <span class="kw">and</span> close > <span class="fn">ta.vwap</span>(hlc3)
+  <span class="kw">and</span> <span class="vr">k</span> > <span class="nm">55</span>
+
+<span class="vr">bearTrend</span> = <span class="vr">maBear</span>
+  <span class="kw">and</span> close < <span class="vr">fibComposite</span>
+  <span class="kw">and</span> close < <span class="fn">ta.vwap</span>(hlc3)
+  <span class="kw">and</span> <span class="vr">k</span> < <span class="nm">45</span>
+
+<span class="sec">// ── VOLUME IMPULSE FILTER ───────────</span>
+<span class="vr">volMA</span>    = <span class="fn">ta.sma</span>(volume, <span class="nm">20</span>)
+<span class="vr">volRel</span>   = <span class="vr">volMA</span> > <span class="nm">0</span> ? volume / <span class="vr">volMA</span> : <span class="nm">1.0</span>
+<span class="vr">bodyPct</span>  = close != <span class="nm">0.0</span> ?
+  <span class="fn">math.abs</span>(close-open)/close*<span class="nm">100.0</span> : <span class="nm">0.0</span>
+<span class="vr">bigMove</span>  = <span class="vr">volRel</span> > <span class="nm">2.0</span> <span class="kw">and</span> <span class="vr">bodyPct</span> > <span class="nm">1.5</span>
+<span class="vr">bearImpulse</span> = <span class="vr">bigMove</span> <span class="kw">and</span> close < open
+<span class="vr">bearBlock</span>   = <span class="fn">ta.barssince</span>(<span class="vr">bearImpulse</span>) < <span class="nm">2</span>
+
+<span class="sec">// ── ENTRY SIGNALS ───────────────────</span>
+<span class="vr">crossUp</span>   = <span class="fn">ta.crossover</span>(close, <span class="vr">fibComposite</span>)
+<span class="vr">crossDown</span> = <span class="fn">ta.crossunder</span>(close, <span class="vr">fibComposite</span>)
+
+<span class="vr">longSignal</span>  = <span class="vr">bullTrend</span> <span class="kw">and</span> <span class="vr">crossUp</span>
+              <span class="kw">and not</span> <span class="vr">bearBlock</span>
+<span class="vr">shortSignal</span> = <span class="vr">bearTrend</span> <span class="kw">and</span> <span class="vr">crossDown</span>
+
+<span class="sec">// ── ATR RISK MANAGEMENT ─────────────</span>
+<span class="vr">atr</span>      = <span class="fn">ta.atr</span>(<span class="nm">14</span>)
+<span class="vr">stopMult</span> = <span class="nm">1.5</span>
+<span class="vr">rrRatio</span>  = <span class="nm">2.0</span>
+
+<span class="sec">// ── PERSISTENT STATE ────────────────</span>
+<span class="kw">var bool</span>  <span class="vr">inLong</span>     = <span class="kw">false</span>
+<span class="kw">var bool</span>  <span class="vr">inShort</span>    = <span class="kw">false</span>
+<span class="kw">var float</span> <span class="vr">longStop</span>   = <span class="kw">na</span>
+<span class="kw">var float</span> <span class="vr">longTarget</span> = <span class="kw">na</span>
+<span class="kw">var float</span> <span class="vr">shortStop</span>  = <span class="kw">na</span>
+<span class="kw">var float</span> <span class="vr">shortTarget</span>= <span class="kw">na</span>
+
+<span class="kw">if</span> <span class="vr">longSignal</span> <span class="kw">and not</span> <span class="vr">inLong</span>
+    <span class="vr">inLong</span>      := <span class="kw">true</span>
+    <span class="vr">inShort</span>     := <span class="kw">false</span>
+    <span class="vr">longStop</span>    := close - <span class="vr">atr</span> * <span class="vr">stopMult</span>
+    <span class="vr">longTarget</span>  := close + <span class="vr">atr</span> * <span class="vr">stopMult</span> * <span class="vr">rrRatio</span>
+
+<span class="kw">if</span> <span class="vr">shortSignal</span> <span class="kw">and not</span> <span class="vr">inShort</span>
+    <span class="vr">inShort</span>     := <span class="kw">true</span>
+    <span class="vr">inLong</span>      := <span class="kw">false</span>
+    <span class="vr">shortStop</span>   := close + <span class="vr">atr</span> * <span class="vr">stopMult</span>
+    <span class="vr">shortTarget</span> := close - <span class="vr">atr</span> * <span class="vr">stopMult</span> * <span class="vr">rrRatio</span>
+
+<span class="sec">// ── EXITS ───────────────────────────</span>
+<span class="kw">if</span> <span class="vr">inLong</span>
+    <span class="kw">if</span> low <= <span class="vr">longStop</span> <span class="kw">or</span> high >= <span class="vr">longTarget</span>
+        <span class="vr">inLong</span> := <span class="kw">false</span>
+<span class="kw">if</span> <span class="vr">inShort</span>
+    <span class="kw">if</span> high >= <span class="vr">shortStop</span> <span class="kw">or</span> low <= <span class="vr">shortTarget</span>
+        <span class="vr">inShort</span> := <span class="kw">false</span>
+
+<span class="sec">// ── PLOTS ───────────────────────────</span>
+<span class="fn">plotshape</span>(<span class="vr">longSignal</span>,
+  style=shape.triangleup,
+  location=location.belowbar,
+  color=color.lime, text=<span class="str">"LONG"</span>)
+
+<span class="fn">plotshape</span>(<span class="vr">shortSignal</span>,
+  style=shape.triangledown,
+  location=location.abovebar,
+  color=color.red, text=<span class="str">"SHORT"</span>)
+
+<span class="sec">// ── INFO PANEL (top right) ──────────</span>
+<span class="kw">var</span> table <span class="vr">panel</span> = <span class="fn">table.new</span>(
+  position.top_right, <span class="nm">1</span>, <span class="nm">6</span>,
+  border_width=<span class="nm">1</span>)
+
+<span class="sec">// ── ALERTS ──────────────────────────</span>
+<span class="fn">alertcondition</span>(<span class="vr">longSignal</span>,
+  title=<span class="str">"Long Entry"</span>,
+  message=<span class="str">"LONG {{ticker}} {{interval}}"</span>)
+<span class="fn">alertcondition</span>(<span class="vr">shortSignal</span>,
+  title=<span class="str">"Short Entry"</span>,
+  message=<span class="str">"SHORT {{ticker}} {{interval}}"</span>)</pre>
+        </div>
+      </div>
+      <div class="pine-ann">
+        <div class="ann sys">
+          <div class="ann-lbl">System Overview</div>
+          <div class="ann-title">4-Layer Confirmation Architecture</div>
+          <div class="ann-desc">All four layers must agree simultaneously before a signal fires — macro weekly trend, Fibonacci composite price structure, VWAP alignment, and Stochastic RSI momentum. This multi-filter design substantially reduces false positives by requiring confirmation across independent market dimensions.</div>
+        </div>
+        <div class="ann bull">
+          <div class="ann-lbl">Layer 1 · Macro Trend</div>
+          <div class="ann-title">Weekly MA Stack (50W / 100W / 200W)</div>
+          <div class="ann-desc">Uses <code class="ic">request.security()</code> to pull higher-timeframe weekly SMAs onto the 4H chart. Bull trend requires 50W &gt; 100W &gt; 200W — institutional-grade trend confirmation. This prevents taking countertrend entries in structurally bearish weekly environments.</div>
+        </div>
+        <div class="ann bull">
+          <div class="ann-lbl">Layer 2 · Price Structure</div>
+          <div class="ann-title">Fibonacci Composite MA (8/13/21/34/55 EMA)</div>
+          <div class="ann-desc">Averages five Fibonacci-sequence EMAs into a single dynamic composite line. Acts as adaptive support/resistance. Entry triggers on <code class="ic">ta.crossover(close, fibComposite)</code> — price reclaiming the composite from below while all trend conditions are confirmed.</div>
+        </div>
+        <div class="ann bull">
+          <div class="ann-lbl">Layer 3 · Momentum + VWAP</div>
+          <div class="ann-title">Stochastic RSI K &gt; 55 + Price Above VWAP</div>
+          <div class="ann-desc">Custom Stochastic RSI calculated internally — K above 55 for longs, below 45 for shorts. Asymmetric thresholds align with trend direction rather than mean-reversion. VWAP confirmation adds institutional price reference — entries above VWAP on longs only.</div>
+        </div>
+        <div class="ann flt">
+          <div class="ann-lbl">Layer 4 · Impulse Filter</div>
+          <div class="ann-title">Volume Spike + Big Candle Body Detection</div>
+          <div class="ann-desc">Blocks entries that would fade a high-volume bearish candle — defined as volume &gt; 2× 20-bar MA and body &gt; 1.5% of price. Uses <code class="ic">ta.barssince(bearImpulse) &lt; 2</code> to maintain a 2-bar impulse window. Optional slope/curvature filter on fibComposite also available.</div>
+        </div>
+        <div class="ann sys">
+          <div class="ann-lbl">Risk Management</div>
+          <div class="ann-title">ATR Stops (1.5×) · Target (2:1 RR) · Persistent State</div>
+          <div class="ann-desc">Stops at 1.5× ATR(14) below entry; targets at 2:1 RR. Persistent <code class="ic">var</code> state variables track open positions across bars. Auto-exits on stop/target hit with visual markers. Configurable re-entry, RR, ATR multiplier, and all filter toggles via input groups.</div>
+        </div>
+        <div class="ann web">
+          <div class="ann-lbl">Applications + Alerts</div>
+          <div class="ann-title">Crypto + Equities · Live TradingView Alerts</div>
+          <div class="ann-desc">Designed for 4H timeframe across crypto assets (BTC, ETH, Base-chain tokens) and equities. Six <code class="ic">alertcondition()</code> blocks for entry, stop hit, and target hit — deliverable via TradingView webhook to any endpoint. Info panel shows live trend state, ATR, and trade distances.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- WEB3 -->
+<section id="web3">
+  <div class="section-header"><span class="section-num">07</span><h2 class="section-title">Web3 Projects</h2><div class="section-line"></div></div>
+  <div class="web3-grid">
+    <div class="w3-card"><div class="w3-header"><div class="w3-icon">🥝</div><div><div class="w3-name">The Kiwi Club</div><div class="w3-chain">Web3 Community Project</div></div></div><p class="w3-desc">Web3 community project exploring community tokenomics, holder analytics, and the intersection of social coordination and decentralized data systems.</p><div class="w3-links"><a href="https://x.com/THE_KIWI_CLUB" target="_blank" class="w3-link">↗ X / Twitter</a></div></div>
+    <div class="w3-card"><div class="w3-header"><div class="w3-icon">⚡</div><div><div class="w3-name">ZANE</div><div class="w3-chain">Base Chain · Uniswap V2</div></div></div><p class="w3-desc">ZANE token deployed on Base — practical application of tokenomics research. Hands-on experience with smart contract deployment, on-chain liquidity mechanics, DeFi protocol interaction, and community analytics on Base L2.</p><div class="w3-links"><a href="https://x.com/ZaneBaseGuy" target="_blank" class="w3-link">↗ X / Twitter</a><a href="https://dexscreener.com/base/0x5e4d82dd269ed926f34ae66fa87e80cb0eba3d68" target="_blank" class="w3-link">↗ DEX Screener</a><a href="https://basescan.org/token/0x581E3e7a6C0bAAa899D8b49031a5567cF15e1419" target="_blank" class="w3-link">↗ Basescan</a></div></div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<section>
+  <div class="cta">
+    <h2 class="cta-title">Let's work together.</h2>
+    <p class="cta-sub">Open to Staff / Principal Analytics, Data Science, and Senior IC roles at high-growth companies.</p>
+    <div class="cta-links"><a href="mailto:taj651@hotmail.com" class="btn-primary">taj651@hotmail.com</a><a href="https://www.linkedin.com/in/taj-anderson-39a025137/" target="_blank" class="btn-ghost">LinkedIn ↗</a><a href="tel:5612153548" class="btn-ghost">561-215-3548</a></div>
+  </div>
+</section>
+
+<footer><span class="foot-copy">© 2025 Taj Anderson · Analytics Leader</span><div class="foot-links"><a href="https://www.linkedin.com/in/taj-anderson-39a025137/" target="_blank">LinkedIn</a><a href="https://x.com/ZaneBaseGuy" target="_blank">X / Web3</a><a href="https://x.com/THE_KIWI_CLUB" target="_blank">Kiwi Club</a></div></footer>
+
+</div>
+
+<script>
+function switchTab(btn,id){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById(id).classList.add('on');
+}
+
+function makeBarChart(id, series){
+  const el=document.getElementById(id); if(!el)return;
+  const allVals=series.flatMap(s=>s.values);
+  const max=Math.max(...allVals);
+  const labels=series[0].labels;
+  const colors=['#4f7fff','#2dd4bf','#22c55e','#f59e0b'];
+  labels.forEach((lbl,i)=>{
+    const g=document.createElement('div');
+    g.style.cssText='display:flex;flex-direction:column;align-items:center;flex:1;gap:2px;';
+    series.forEach((s,si)=>{
+      const b=document.createElement('div');
+      b.className='bar';
+      b.style.cssText=`height:${Math.round(s.values[i]/max*80)}px;background:${colors[si]};opacity:.85;`;
+      g.appendChild(b);
+    });
+    const l=document.createElement('div');
+    l.className='bar-lbl'; l.textContent=lbl; g.appendChild(l);
+    el.appendChild(g);
+  });
+}
+
+makeBarChart('bc1',[
+  {labels:['W1','W2','W3','W4','W5','W6','W7','W8'],values:[320,380,290,410,350,440,390,420]},
+  {labels:['W1','W2','W3','W4','W5','W6','W7','W8'],values:[180,210,160,240,200,260,230,250]},
+  {labels:['W1','W2','W3','W4','W5','W6','W7','W8'],values:[140,160,130,170,150,190,165,180]},
+  {labels:['W1','W2','W3','W4','W5','W6','W7','W8'],values:[80,90,70,100,85,110,95,105]},
+]);
+makeBarChart('bc2',[
+  {labels:['NE','SE','MW','SW','W','NW','CAN'],values:[420,380,510,290,340,260,180]},
+  {labels:['NE','SE','MW','SW','W','NW','CAN'],values:[390,360,480,270,310,240,165]},
+]);
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('vis'),e.target.dataset.d||0);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:.08});
+document.querySelectorAll('.tl-item').forEach((el,i)=>{el.dataset.d=i*100;obs.observe(el);});
+</script>
+</body>
+</html>
